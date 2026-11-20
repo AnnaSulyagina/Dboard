@@ -26,21 +26,21 @@ export class ToDoWidget extends UIComponent {
   }
 
   onBodyClick(event) {
-  // кнопка «Добавить»
-  if (event.target.closest('.todo-add-btn')) {
-    this.addTask();
-    return;
-  }
+    // Кнопка «Добавить» — обрабатываем первой, до поиска .todo-item
+    if (event.target.closest('.todo-add-btn')) {
+      this.addTask();
+      return;
+    }
 
-  const taskEl = event.target.closest('.todo-item');
-  if (event.target.closest('.todo-del')) {
-    if (taskEl) this.removeTask(Number(taskEl.dataset.index));
-    return;
+    const taskEl = event.target.closest('.todo-item');
+    if (event.target.closest('.todo-del')) {
+      if (taskEl) this.removeTask(Number(taskEl.dataset.index));
+      return;
+    }
+    if (event.target.closest('.todo-label') && taskEl) {
+      this.toggleTask(Number(taskEl.dataset.index));
+    }
   }
-  if (event.target.closest('.todo-label') && taskEl) {
-    this.toggleTask(Number(taskEl.dataset.index));
-  }
-}
 
   addTask() {
     const text = this.inputEl.value.trim();
