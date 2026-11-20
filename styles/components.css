@@ -1,0 +1,88 @@
+.widget {
+  background: var(--card); border-radius: 12px; box-shadow: 0 4px 14px rgba(30, 30, 60, .1);
+  display: flex; flex-direction: column; min-height: 90px; user-select: none;
+}
+.widget-header {
+  display: flex; align-items: center; gap: 8px; padding: 12px 14px;
+  border-bottom: 1px solid #f0f1f6;
+}
+.widget-grip { color: #c3c7d4; cursor: grab; font-size: 14px; }
+.widget-title { font-size: 14px; font-weight: 600; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.widget-controls { display: flex; gap: 4px; }
+.w-btn {
+  width: 22px; height: 22px; border: none; border-radius: 6px; background: #f1f2f7; color: var(--muted);
+  cursor: pointer; font-size: 11px; line-height: 1;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.w-btn:hover { background: var(--pink); color: #fff; }
+.widget-body { padding: 12px 14px; overflow: auto; max-height: 320px; }
+.widget.minimized .widget-body { display: none; }
+.widget.minimized { min-height: 0; }
+
+/* ---------- Список дел ---------- */
+.todo-add { display: flex; gap: 6px; margin-bottom: 10px; }
+.todo-input, .notes-area, .cd-date, .cd-name, .weather-city, .weather-date {
+  font: inherit; font-size: 13px; padding: 8px 10px; border: 1px solid #e2e4ec; border-radius: 8px; outline: none;
+}
+.todo-input { flex: 1; min-width: 0; }
+.todo-input:focus, .notes-area:focus, .cd-date:focus, .cd-name:focus { border-color: var(--pink); }
+.todo-add-btn {
+  padding: 8px 14px; border: none; border-radius: 8px; background: var(--accent-gradient); color: #fff; cursor: pointer;
+}
+.todo-add-btn:hover { filter: brightness(1.07); }
+.todo-list { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+.todo-item {
+  display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-radius: 8px; background: #f8f8fb;
+}
+.todo-item:hover { background: #f1f2f7; }
+.todo-label { display: flex; align-items: center; gap: 8px; flex: 1; cursor: pointer; font-size: 13px; }
+.todo-label input { accent-color: var(--pink); cursor: pointer; }
+.todo-item.done .todo-text { text-decoration: line-through; color: var(--muted); }
+.todo-del { background: none; border: none; color: #c3c7d4; cursor: pointer; padding: 2px 4px; }
+.todo-del:hover { color: var(--pink); }
+.todo-counter { margin-top: 8px; font-size: 11px; color: var(--muted); text-align: right; }
+
+/* ---------- Обратный отсчёт ---------- */
+.countdown-display { text-align: center; padding: 4px 0 10px; }
+.cd-label { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+.cd-digits { display: flex; justify-content: center; gap: 6px; }
+.cd-cell {
+  display: flex; flex-direction: column; align-items: center; min-width: 48px; padding: 6px 4px;
+  background: var(--accent-gradient); border-radius: 8px; color: #fff;
+}
+.cd-cell b { font-size: 18px; }
+.cd-cell i { font-style: normal; font-size: 9px; opacity: .85; }
+.cd-finished { margin-top: 8px; font-weight: 600; color: var(--pink); }
+.hidden { display: none !important; }
+.countdown-controls { display: flex; flex-direction: column; gap: 6px; }
+
+/* ---------- Заметки ---------- */
+.notes-area {
+  width: 100%; min-height: 110px; resize: vertical; font: inherit; font-size: 13px; line-height: 1.45;
+}
+.notes-meta { margin-top: 6px; text-align: right; font-size: 11px; color: var(--muted); }
+
+/* ---------- Цитата ---------- */
+.quote-box { min-height: 70px; }
+.quote-text { font-size: 14px; font-style: italic; line-height: 1.5; margin-bottom: 8px; }
+.quote-author { font-size: 12px; color: var(--muted); text-align: right; }
+.quote-refresh {
+  margin-top: 10px; padding: 7px 14px; border: 1px solid var(--pink); color: var(--pink);
+  background: none; border-radius: 8px; cursor: pointer; font: inherit; font-size: 13px;
+}
+.quote-refresh:hover { background: var(--pink); color: #fff; }
+.quote-refresh:disabled { opacity: .5; cursor: default; }
+
+/* ---------- Погода ---------- */
+.weather-controls { display: flex; gap: 6px; margin-bottom: 10px; }
+.weather-city, .weather-date { flex: 1; min-width: 0; }
+.weather-main { display: flex; align-items: center; gap: 12px; }
+.weather-icon { font-size: 34px; }
+.weather-temp { font-size: 20px; font-weight: 700; }
+.weather-desc { font-size: 13px; color: var(--muted); }
+.weather-extra {
+  display: flex; gap: 10px; margin-top: 10px; font-size: 11px; color: var(--muted); flex-wrap: wrap;
+  border-top: 1px solid #f0f1f6; padding-top: 8px;
+}
+.weather-status { font-size: 13px; color: var(--muted); padding: 6px 0; }
+.weather-status.error { color: #d43a5e; }

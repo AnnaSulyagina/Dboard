@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Планнер — дашборд</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/components.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="logo"><span class="logo-icon">🗂️</span> Планнер</div>
+      <div class="sidebar-section">
+        <div class="section-title">Доски</div>
+        <ul id="board-list" class="board-list"></ul>
+        <button id="add-board-btn" class="sidebar-add">+ Новая доска</button>
+      </div>
+      <div class="sidebar-footer">UI-компоненты · ES6-модули</div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <div class="topbar-left">
+          <h1 id="board-title" title="Двойной клик — переименовать">Личная доска</h1>
+          <span id="board-hint" class="board-hint"></span>
+        </div>
+        <div class="topbar-actions">
+          <div class="add-menu-wrap">
+            <button id="add-widget-btn" class="btn btn-primary">+ Добавить виджет</button>
+            <div id="add-widget-menu" class="add-menu hidden">
+              <button data-type="todo">✅ Список дел</button>
+              <button data-type="countdown">⏳ Обратный отсчёт</button>
+              <button data-type="notes">📝 Заметки</button>
+              <button data-type="quote">💬 Цитата <small>API</small></button>
+              <button data-type="weather">🌤️ Погода на день <small>API</small></button>
+            </div>
+          </div>
+          <button id="edit-mode-btn" class="btn btn-ghost">Режим редактирования</button>
+        </div>
+      </header>
+      <main id="board-canvas" class="board-canvas" aria-label="Поле виджетов"></main>
+    </div>
+  </div>
+  <script type="module" src="main.js"></script>
+</body>
+</html>
