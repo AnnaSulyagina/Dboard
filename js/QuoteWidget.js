@@ -38,14 +38,17 @@ export class QuoteWidget extends UIComponent {
     this.textEl.textContent = 'Загрузка...';
     this.authorEl.textContent = '';
     try {
-      const response = await fetch('https://dummyjson.com/quotes/random');
+      const response = await fetch('https://zenquotes.io/api/random', {
+        signal: AbortSignal.timeout(6000),
+      });
       if (!response.ok) throw new Error('HTTP ' + response.status);
-      const data = await response.json();
-      this.current = { quote: data.quote, author: data.author };
+      const [data] = await response.json(); // ответ приходит массивом: [{ q, a }]
+      this.current = { quote: data.q, author: data.a };
     } catch (e) {
       // Оффлайн-резерв: локальный массив цитат
       this.current = FALLBACK_QUOTES[Math.floor(Math.random() * FALLBACK_QUOTES.length)];
     }
+    
     this.textEl.textContent = '«' + this.current.quote + '»';
     this.authorEl.textContent = '— ' + this.current.author;
     this.loading = false;
